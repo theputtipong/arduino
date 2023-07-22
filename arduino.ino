@@ -1,21 +1,30 @@
-#include <Servo.h>
-Servo servoMotor;
+const int ledPin = 13;
+const int analogPin = A0;
 
-const int servoPin = 13;  // Define the pin that the LED is connected to.
-
-void setup() {
-  servoMotor.attach(servoPin);
+void setup()
+{
+  Serial.begin(115200);
+  pinMode(ledPin, OUTPUT);
+  pinMode(analogPin, INPUT);
 }
 
-void loop() {
-  servoRotate();
+void loop()
+{
+  CheckLDR();
 }
 
-void servoRotate() {
-  servoMotor.write(0);
-  delay(1000);            // Delay for 1 second
-  servoMotor.write(90);   // Rotate the servo to 90 degrees (center angle)
-  delay(1000);            // Delay for 1 second
-  servoMotor.write(180);  // Rotate the servo to 180 degrees (maximum angle)
-  delay(1000);            // Delay for 1 second
+void CheckLDR()
+{
+  int valLDR = analogRead(analogPin);
+  if (valLDR < 300)
+  {
+    Serial.println(valLDR);
+    digitalWrite(ledPin, HIGH);
+  }
+  else
+  {
+    Serial.println(valLDR);
+    digitalWrite(ledPin, LOW);
+  }
+  delay(1000);
 }
