@@ -1,18 +1,16 @@
-// int count = 0;
+const int ledPin = 1;
 
 void setup() {
-  // Initialize the serial port
-  // Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);  // Set the pin as output.
 }
 
 void loop() {
-  // // Print "Hello, world!" to the serial port
-  // if (count < 10) {
-  //   Serial.println(String(count) + ": Hello, world! Arduino");
-  //   count++;
-  // } else {
-  //   // Delay for 10 seconds.
-  //   delay(10000);
-  //   count = 0;
-  // }
+  blinkLED();
+}
+
+void blinkLED() {
+  digitalWrite(ledPin, HIGH);  // Turn on the LED on.
+  delay(500);                 // Delay for 0.5 seconds.
+  digitalWrite(ledPin, LOW);  // Turn on the LED on.
+  delay(500);
 }
